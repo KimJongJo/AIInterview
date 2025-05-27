@@ -1,0 +1,65 @@
+.RoomDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comentBox {
+  border: 5px black solid;
+  width: 1500px;
+  height: 150px;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.RoomImg {
+  width: 800px;
+}
+
+.getOutButton {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  margin: 10px;
+  width: 100px;
+  height: 30px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.speakBox {
+  width: 1300px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.textarea {
+  height: 150px;
+  width: 900px;
+  resize: none;
+  font-size: 20px;
+  border: 3px black solid;
+  border-radius: 15px;
+}
+
+.speakButton {
+  height: 80px;
+  width: 100px;
+  font-size: 20px;
+  margin-left: 20px;
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: 15px;
+  transition-duration: 0.2s;
+}
+
+.speakButton:hover {
+  background-color: gray;
+  color: white;
+  transition-duration: 0.2s;
+}
