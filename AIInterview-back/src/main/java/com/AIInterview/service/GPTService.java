@@ -29,7 +29,7 @@ public class GPTService {
     public String askGPT(String text) {
 
         List<Message> messages = List.of(
-                new Message("system", "너는 백엔드 개발자 면접관이야. 여기 이력서를 참고해서 질문 5가지만 해줘."),
+                new Message("system", "너는 백엔드 개발자 면접관이야 이력서를 보고 프로젝트 질문을 포함한 질문 6가지 해줘. 예를들어 1. 질문 ~~ 2. 질문 ~~ 3. 질문 ~~ 이런식으로 질문해줘, 질문당 줄바꿈은 한칸씩 해줘"),
                 new Message("user", text)
         );
 

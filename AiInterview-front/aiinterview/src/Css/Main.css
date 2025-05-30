@@ -23,3 +23,18 @@
   color: white;
   transition-duration: 0.2s;
 }
+
+.watingDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.watingBox {
+  line-height: 50px;
+  color: white;
+  font-size: 30px;
+  width: 700px;
+  height: 50px;
+  margin-top: 50px;
+  position: fixed;
+}

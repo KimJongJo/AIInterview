@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("upload")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -36,11 +39,13 @@ public class FileController {
         }
 
         String answer = gptService.askGPT(text);
+        Map<String, String> questions = new HashMap<>();
+        questions.put("questions", answer);
 
-        System.out.println(answer);
+//        System.out.println(answer);
 
 
-        return null;
+        return ResponseEntity.ok().body(questions);
     }
 
 }

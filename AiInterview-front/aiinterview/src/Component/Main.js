@@ -7,13 +7,23 @@ function Main() {
   const [userInfo, setUserInfo] = useState(null);
   const navigate = useNavigate();
 
+  const [isWating, setIswating] = useState(false);
+
   const interviewInfo = async () => {
+    if (isWating) {
+      alert("현재 면접장으로 들어가는중입니다...");
+      return;
+    }
+
     if (userInfo === null) {
       alert("이력서를 선택해주세요.");
       return;
     } else {
       if (window.confirm("면접을 보시겠습니까?")) {
         alert("면접을 시작합니다.");
+
+        // 대기상태로 변경
+        setIswating(true);
 
         const formDate = new FormData();
         formDate.append("file", userInfo);
@@ -28,6 +38,7 @@ function Main() {
             alert("서버 응답 실패");
             return;
           }
+
           // 서버에 이력서를 전달한 뒤 gpt를 통한 질문을 응답 받음
           navigate("/Room", { state: { questions: response.data.questions } });
         } catch (error) {
@@ -39,6 +50,14 @@ function Main() {
 
   return (
     <div>
+      <div className="watingDiv">
+        <div
+          style={{ display: isWating ? "block" : "none" }}
+          className="watingBox"
+        >
+          들어가는중 입니다... 잠시만 기다려주세요...
+        </div>
+      </div>
       <img src="/images/문.jpg" width={"700px"}></img>
       <div>
         <span className="MainSpan">이력서 선택 : </span>

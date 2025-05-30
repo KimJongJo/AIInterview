@@ -4,12 +4,11 @@
   align-items: center;
 }
 
-.comentBox {
+.commentBox {
   border: 5px black solid;
   width: 1500px;
   height: 150px;
   font-size: 30px;
-  text-align: center;
   border-radius: 15px;
   margin-top: 20px;
 }
