@@ -10,6 +10,7 @@ import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class GPTService {
@@ -26,12 +27,39 @@ public class GPTService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public String askGPT(String text) {
+    // 인터뷰 생성 요청
+    public String askInterview(String text) {
 
         List<Message> messages = List.of(
                 new Message("system", "너는 백엔드 개발자 면접관이야 이력서를 보고 프로젝트 질문을 포함한 질문 6가지 해줘. 예를들어 1. 질문 ~~ 2. 질문 ~~ 3. 질문 ~~ 이런식으로 질문해줘, 질문당 줄바꿈은 한칸씩 해줘"),
                 new Message("user", text)
         );
+
+        return askGPT(messages);
+    }
+
+    // 답변 리뷰 생성 요청
+    public String askReview(Map<String, List<String>> content){
+
+        StringBuilder sb = new StringBuilder();
+        List<String> questionList = content.get("questionList");
+        List<String> answerList = content.get("answerList");
+
+        for(int i = 0; i < questionList.size(); i++){
+            sb.append("질문 ").append(questionList.get(i)).append("\n");
+            sb.append("답변 ").append(answerList.get(i)).append("\n\n");
+        }
+
+        List<Message> messages = List.of(
+                new Message("system", "너는 백엔드 개발자 면접관이야 각 질문에 답변한 내용을 보고 피드백 해줘. 예를들어 1. 피드백 ~~ 2. 피드백 ~~ 3. 피드백~~ 이런식으로 피드백 해줘"),
+                new Message("user", sb.toString()));
+
+        return askGPT(messages);
+
+    }
+
+
+    public String askGPT(List<Message> messages){
 
         // 1. 요청 DTO 생성
         GPTRequest request = new GPTRequest(model, messages);
@@ -67,12 +95,7 @@ public class GPTService {
         } catch(Exception e){
             System.err.println("기타 예외 : " + e.getMessage());
             throw new RuntimeException("GPT 호출 중 오류 발생", e);
-
-
-
         }
-
-
 
     }
 }

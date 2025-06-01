@@ -62,3 +62,46 @@
   color: white;
   transition-duration: 0.2s;
 }
+
+.reviewBtnDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.reviewBtn {
+  margin-top: 30px;
+  width: 200px;
+  height: 70px;
+  font-size: 25px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.reviewBtn:hover {
+  transition-duration: 0.3s;
+  background-color: gray;
+  color: white;
+}
+
+.reviewDiv {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.head {
+  border: 3px solid black;
+  height: 70px;
+  line-height: 70px;
+  font-size: 40px;
+}
+
+.review {
+  border: 3px solid black;
+  width: 800px;
+  height: 700px;
+  padding-top: 30px;
+  font-size: 25px;
+}

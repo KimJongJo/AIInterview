@@ -38,7 +38,7 @@ public class FileController {
             return null;
         }
 
-        String answer = gptService.askGPT(text);
+        String answer = gptService.askInterview(text);
         Map<String, String> questions = new HashMap<>();
         questions.put("questions", answer);
 
