@@ -58,6 +58,7 @@ function Main() {
           들어가는중 입니다... 잠시만 기다려주세요...
         </div>
       </div>
+      <div className="title">AI 개발자 면접</div>
       <img src="/images/문.jpg" width={"700px"}></img>
       <div>
         <span className="MainSpan">이력서 선택 : </span>

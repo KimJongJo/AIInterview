@@ -31,7 +31,7 @@ public class GPTService {
     public String askInterview(String text) {
 
         List<Message> messages = List.of(
-                new Message("system", "너는 백엔드 개발자 면접관이야 이력서를 보고 프로젝트 질문을 포함한 질문 6가지 해줘. 예를들어 1. 질문 ~~ 2. 질문 ~~ 3. 질문 ~~ 이런식으로 질문해줘, 질문당 줄바꿈은 한칸씩 해줘"),
+                new Message("system", "너는 백엔드 개발자 면접관이야 이력서를 보고 개발 관련 질문 6가지 해줘, 한 가지 질문이 끝나면 바로 다음줄에 다음 질문해 줘"),
                 new Message("user", text)
         );
 
@@ -50,8 +50,10 @@ public class GPTService {
             sb.append("답변 ").append(answerList.get(i)).append("\n\n");
         }
 
+//        System.out.println(sb);
+
         List<Message> messages = List.of(
-                new Message("system", "너는 백엔드 개발자 면접관이야 각 질문에 답변한 내용을 보고 피드백 해줘. 예를들어 1. 피드백 ~~ 2. 피드백 ~~ 3. 피드백~~ 이런식으로 피드백 해줘"),
+                new Message("system", "각 질문에 대한 답변을 보고 각각 피드백 해줘"),
                 new Message("user", sb.toString()));
 
         return askGPT(messages);
